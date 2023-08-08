@@ -14,12 +14,12 @@
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="{{ asset('icones/apple-touch-icon.png')}}" sizes="180x180">
-    <link rel="icon" href="{{ asset('icones/favicon-32x32.png')}}" sizes="32x32" type="image/png">
-    <link rel="icon" href="{{ asset('icones/favicon-16x16.png')}}" sizes="16x16" type="image/png">
-    <link rel="manifest" href="{{ asset('icones/manifest.json')}}">
-    <link rel="mask-icon" href="{{ asset('icones/safari-pinned-tab.svg')}}" color="#712cf9">
-    <link rel="icon" href="{{ asset('icones/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{ asset('icones/apple-touch-icon.png') }}" sizes="180x180">
+    <link rel="icon" href="{{ asset('icones/favicon-32x32.png') }}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ asset('icones/favicon-16x16.png') }}" sizes="16x16" type="image/png">
+    <link rel="manifest" href="{{ asset('icones/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('icones/safari-pinned-tab.svg') }}" color="#712cf9">
+    <link rel="icon" href="{{ asset('icones/favicon.ico') }}">
     <meta name="theme-color" content="#712cf9">
 
 
@@ -122,8 +122,7 @@
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
         </symbol>
         <symbol id="door-closed" viewBox="0 0 16 16">
-            <path
-                d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+            <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
             <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
         </symbol>
         <symbol id="file-earmark" viewBox="0 0 16 16">
@@ -208,8 +207,8 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 @yield('content')
-                
-               {{-- <h2>Section title</h2>
+
+                {{-- <h2>Section title</h2>
                 <div class="table-responsive small">
                     <table class="table table-striped table-sm">
                         <thead>
@@ -336,15 +335,20 @@
                             </tr>
                         </tbody>
                     </table> --}}
-                </div> 
-            </main>
         </div>
+        </main>
+    </div>
     </div>
     @yield('scripts')
-    <script src="/js/bootstrap.bundle.min.js"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
     <script src="dashboard.js"></script>
     <script src="/js/color-modes.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+
 </body>
 
 </html>
