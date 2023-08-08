@@ -22,26 +22,45 @@ class ProdutosController extends Controller
         return view('pages.produtos.paginacao', compact('findProduto'));
     }
 
-        public function delete(Request $request){
-            $id = $request->id;
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $buscaRegistro = Produto::find($id);
+        $buscaRegistro->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function cadastrarProduto(FormRequestProduto $request)
+    {
+        if ($request->method() == "POST") {
+            //cria os dados
+            $data = $request->all();
+            $componentes = new Componentes();
+            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
+            Produto::create($data);
+
+            return redirect()->route('produto.index');
+        }
+
+        return view('pages.produtos.create');
+    }
+
+    public function atualizarProduto(FormRequestProduto $request, $id)
+    {
+        if ($request->method() == "PUT") {
+            // atualiza os dados
+            $data = $request->all();
+            $componentes = new Componentes();
+            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
+
             $buscaRegistro = Produto::find($id);
-            $buscaRegistro->delete();
+            $buscaRegistro->update($data);
 
-            return response()->json(['success' => true]);
+            return redirect()->route('produto.index');
         }
-
-        public function cadastrarProduto(FormRequestProduto $request){
-            if($request->method() == "POST"){
-                //cria os dados
-                $data = $request->all();
-                $componentes = new Componentes();
-                $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
-
-                Produto::create($data);
-
-                return redirect()->route('produto.index');
-            }
-
-            return view('pages.produtos.create');
-        }
+        $findProduto = Produto::where('id', '=', $id)->first();
+        return view('pages.produtos.atualiza',compact('findProduto'));
+    }
 }
