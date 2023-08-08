@@ -15,7 +15,7 @@ class ProdutosSeeder extends Seeder
     {
         Produto::create(
             [
-                'nome' => 'Copo vidro',
+                'nome' => 'Copo termico',
                 'valor' => '5.45'
             ]
         );

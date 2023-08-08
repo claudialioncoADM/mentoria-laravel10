@@ -348,6 +348,7 @@
     <script src="/js/color-modes.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+    <script src="/js/projeto.js"></script>
 
 </body>
 
