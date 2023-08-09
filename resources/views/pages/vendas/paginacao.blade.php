@@ -23,7 +23,7 @@
                             <th>Numeração</th>
                             <th>Produto</th>
                             <th>Cliente</th>
-                            {{-- <th>Ações</th> --}}
+                            <th>Ações</th>
 
                         </tr>
                     </thead>
@@ -34,10 +34,10 @@
                                 <td>{{ $venda->produto->nome }}</td>
                                 <td>{{ $venda->cliente->nome }}</td>
                                 <td>
-{{--                                     <a href="{{ route('enviaComprovantePorEmail.venda', $venda->id) }}"
+                                    <a href="{{ route('enviaComprovantePorEmail.venda', $venda->id) }}"
                                         class="btn btn-light btn-sm">
                                         Enviar Email
-                                    </a> --}}
+                                    </a>
 
                                 </td>
                             </tr>
