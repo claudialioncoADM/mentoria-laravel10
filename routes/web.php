@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VendaController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::prefix('dashboard')->group(function () {
+//     Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
+// }); 
+
+
+ Route::get('/', function () {
     return view('index');
 });
+
+ Route::prefix('dashboard')->group(function () {
+    Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
+ }); 
 
 // Produtos
 Route::prefix('produtos')->group(function () {
@@ -54,3 +66,13 @@ Route::prefix('vendas')->group(function () {
     Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVendas'])->name('cadastrar.venda');
     Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
 });
+ // Usuários
+Route::prefix('usuario')->group(function () {
+    Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
+    Route::get('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
+    Route::post('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
+    //Atualiza Update
+    Route::get('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+    Route::put('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+    Route::delete('/delete', [UsuarioController::class, 'delete'])->name('usuario.delete');
+}); 
