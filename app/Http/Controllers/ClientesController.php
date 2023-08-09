@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequestClientes;
 use App\Models\Cliente;
 use App\Models\Componentes;
 use Brian2694\Toastr\Facades\Toastr;
@@ -31,23 +32,22 @@ class ClientesController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function cadastrarCliente(Request $request)
+    public function cadastrarCliente(FormRequestClientes $request)
     {
         if ($request->method() == "POST") {
             //cria os dados
             $data = $request->all();
             $componentes = new Componentes();
-            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
 
             Cliente::create($data);
             Toastr::success('Dados gravados com sucesso.');
-            return redirect()->route('cliente.index');
+            return redirect()->route('clientes.index');
         }
 
         return view('pages.clientes.create');
     }
 
-    public function atualizarCliente(Request $request, $id)
+    public function atualizarCliente(FormRequestClientes $request, $id)
     {
         if ($request->method() == "PUT") {
             // atualiza os dados
@@ -61,6 +61,6 @@ class ClientesController extends Controller
             return redirect()->route('cliente.index');
         }
         $findCliente = Cliente::where('id', '=', $id)->first();
-        return view('pages.clientes.atualiza',compact('findCliente'));
+        return view('pages.clientes.atualiza', compact('findCliente'));
     }
 }
