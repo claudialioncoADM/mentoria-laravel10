@@ -32,13 +32,13 @@ class User extends Authenticatable
 
     public function getUsuariosPesquisarIndex(string $search = '')
     {
-        $produto = $this->where(function ($query) use ($search) {
+        $usuario = $this->where(function ($query) use ($search) {
             if ($search) {
                 $query->where('nome', $search);
                 $query->orWhere('nome', 'LIKE', "%{$search}%");
             }
         })->get();
 
-        return $produto;
+        return $usuario;
     }
 }
