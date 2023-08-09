@@ -52,8 +52,6 @@ class ClientesController extends Controller
         if ($request->method() == "PUT") {
             // atualiza os dados
             $data = $request->all();
-            $componentes = new Componentes();
-
             $buscaRegistro = Cliente::find($id);
             $buscaRegistro->update($data);
 
