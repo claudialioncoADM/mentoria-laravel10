@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
-use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VendaController;
@@ -19,17 +19,13 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// Route::prefix('dashboard')->group(function () {
-//     Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
-// }); 
-
-
  Route::get('/', function () {
     return view('index');
 });
 
+
  Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
  }); 
 
 // Produtos

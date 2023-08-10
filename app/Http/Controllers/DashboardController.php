@@ -8,17 +8,17 @@ use App\Models\User;
 use App\Models\Venda;
 use Illuminate\Http\Request;
 
-class DashbordController extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {
          $totalDeProdutoCadastrado = $this->buscaTotalProdutoCadastrado();
          $totalDeClienteCadastrado = $this->buscaTotalClienteCadastrado();
          $totalDeVendaCadastrado = $this->buscaTotalVendaCadastrado();
-        // $totalDeUsuarioCadastrado = $this->buscaTotalUsuarioCadastrado();
+         $totalDeUsuarioCadastrado = $this->buscaTotalUsuarioCadastrado();
 
 
-         return view('pages.dashboard.dashboard', compact('totalDeProdutoCadastrado', 'totalDeClienteCadastrado', 'totalDeVendaCadastrado'));
+         return view('pages.dashboard.dashboard', compact('totalDeProdutoCadastrado', 'totalDeClienteCadastrado', 'totalDeVendaCadastrado','totalDeUsuarioCadastrado'));
     }
 
     public function buscaTotalProdutoCadastrado()
@@ -42,10 +42,10 @@ class DashbordController extends Controller
         return $find;
     }
 
-/*     public function buscaTotalUsuarioCadastrado()
+     public function buscaTotalUsuarioCadastrado()
     {
         $find = User::all()->count();
 
         return $find;
-    } */
+    } 
 }
